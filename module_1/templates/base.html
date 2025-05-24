@@ -1,3 +1,7 @@
+<!-- 
+This is the abstract base template to be implemented by each child template
+-->
+
 <!doctype html>
 <html lang="en-US">
 
@@ -24,12 +28,10 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav" >
 
-
                 <!-- 
                 Use variable "curr_page", which was passed into the webapp with Flask to perform logic 
                 on which of the navbar links to display as "active"
                 -->
-
                 {% if curr_page == 'index' %}
                   <a class="nav-item nav-link active" href="../">Home</a>
                 {% else %}

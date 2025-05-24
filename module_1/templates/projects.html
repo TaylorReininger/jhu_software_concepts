@@ -1,15 +1,20 @@
+<!-- Inherits from base template -->
 {% extends "base.html" %}
 
-
+<!-- Pass the title into the base template -->
 {% block title %}
 <h1>Projects and Publications</h1>
 {% endblock %}
 
 
+<!-- Pass the meat of the page content into the base template -->
 {% block content %}
 
+
+<!-- Create side by side divs to organize the content better -->
 <div class="float-container">
 
+    <!-- This is publication list -->
     <div class="float-child">
 
         <h2>Publications:</h2>
@@ -40,16 +45,17 @@
 
     </div>
 
+    <!-- This is a photo of my puppy -->
     <div class="float-child">
         
-        <img src="{{url_for('static', filename='puppy_pumpkin.jpg')}}" align="center" style="width:400px;height:400px;"/>
+        <img src="{{url_for('static', filename='puppy_pumpkin.jpg')}}" style="width: 400px; height: 400px;"/>
 
     </div>
-
 
 </div>
 
 
+<!-- This is my explanation of this project with link to repo -->
 <div class="float-container">
 
     <div class="float-child2">
@@ -111,8 +117,6 @@
 
 
 </div>
-
-
 
 {% endblock %}
 
