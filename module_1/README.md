@@ -83,8 +83,12 @@ http://127.0.0.1:8080
 ```
 
 
+An example of the web app in action can be seen [here](./site_screenshots.pdf)
 
-## Resources
+
+
+
+## Resources and Citations
 
 - I followed along with a the course notes from the lecture, the live lecture, and the homework PDF. 
 - I found the [Flask quickstart](https://flask.palletsprojects.com/en/stable/quickstart/) guide very helpful for reading about the decorators and the ```__name__``` field at instantiation. 
