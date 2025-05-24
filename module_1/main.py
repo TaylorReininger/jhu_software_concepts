@@ -1,5 +1,5 @@
 
-from flask import Flask
+from flask import Flask, render_template
 
 
 
@@ -11,8 +11,8 @@ web_app = Flask(__name__)
 # Use the route() decorator to define which URL triggers the function.
 @web_app.route("/")
 # Custom function to display web content (can use HTML syntax here if desired)
-def hello_world():
-    return "Hello, World! My name is Taylor"
+def index():
+    return render_template('index.html')
 
 
 # Run the webapp with appropriate IP and port values
