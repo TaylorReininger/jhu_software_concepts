@@ -2,14 +2,14 @@
 
 ## Author
 
-Taylor J. Reininger
+Taylor J. Reininger\
 treinin2@jh.edu
 
 
-For my work during JHU EN.605.256
+For my work during JHU EN.605.256: Modern Software Concepts in Python
 
 
 ## Table of Contents
 
-- Personal Website
+- Module 1: Personal Website
 
