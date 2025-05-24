@@ -1,1 +1,15 @@
 {% extends "base.html" %}
+
+
+{% block title %}
+<h1>Welcome to Taylor's Website!</h1>
+{% endblock %}
+
+
+{% block content %}
+
+<img src="{{url_for('static', filename='professional_headshot_web.jpg')}}" align="left" style="width:400px;height:400px;"/>
+
+<p>My name is Taylor</p>
+
+{% endblock %}
