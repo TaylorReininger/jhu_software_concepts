@@ -3,6 +3,9 @@
 ## Assignment
 
 
+## Implementation
+
+- I am using Python==3.12
 
 
 ## Resources
