@@ -8,8 +8,23 @@
 
 {% block content %}
 
-<img src="{{url_for('static', filename='professional_headshot_web.jpg')}}" align="left" style="width:400px;height:400px;"/>
 
-<p>My name is Taylor</p>
+<div class="float-container">
+
+    <div class="float-child">
+        
+        <img src="{{url_for('static', filename='professional_headshot_web.jpg')}}" align="center" style="width:400px;height:400px;"/>
+
+    </div>
+
+    <div class="float-child">
+
+        <p>My name is Taylor</p>
+
+    </div>
+
+</div>
+
+
 
 {% endblock %}
