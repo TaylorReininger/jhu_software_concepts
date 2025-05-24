@@ -12,19 +12,19 @@ web_app = Flask(__name__)
 # Custom function to display web content (can use HTML syntax here if desired)
 def index():
     # This is my landing page
-    return render_template('index.html')
+    return render_template('index.html', curr_page='index')
 
 
 # This is my contact page
 @web_app.route("/contact/")
 def contact():
-    return render_template('contact.html')
+    return render_template('contact.html', curr_page='contact')
 
 
 # This is my projects page
 @web_app.route("/projects/")
 def projects():
-    return render_template('projects.html')
+    return render_template('projects.html', curr_page='projects')
 
 
 

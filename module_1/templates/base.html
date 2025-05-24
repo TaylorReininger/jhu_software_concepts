@@ -23,15 +23,30 @@
               <div class="navbar-nav" >
 
 
+                <!-- 
+                Use variable "curr_page", which was passed into the webapp with Flask to perform logic 
+                on which of the navbar links to display as "active"
+                -->
+
+                {% if curr_page == 'index' %}
+                  <a class="nav-item nav-link active" href="../">Home</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="../">Home</a>
+                {% endif %}
 
 
+                {% if curr_page == 'contact' %}
+                  <a class="nav-item nav-link active" href="../contact">Contact</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="../contact">Contact</a>
+                {% endif %}
 
-                <a class="nav-item nav-link active" href="../">Home</a>
-                <a class="nav-item nav-link" href="../contact">Contact</a>
-                <a class="nav-item nav-link" href="../projects">Projects</a>
 
-
-
+                {% if curr_page == 'projects' %}
+                  <a class="nav-item nav-link active" href="../projects">Projects</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="../projects">Projects</a>
+                {% endif %}
 
 
               </div>
