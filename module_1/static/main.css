@@ -1,0 +1,56 @@
+
+
+.total {
+    min-height: 2000px;
+    width: 100%;
+    background-color: #313131;
+}
+
+
+
+.container {
+    max-width: 1000px;
+    min-height: 1080px;
+    height: 100%;
+    margin: auto;
+    background-color: #313131;
+}
+
+
+.banner {
+    width: 100%;
+    height: 60px;
+    margin: inherit;
+    background-color: #14345f;
+}
+
+
+.content {
+
+    width: 100%;
+    min-height: 1080px;
+    margin: inherit;
+    background-color: #a0a0a0;
+
+}
+
+
+.footer {
+    width: 100%;
+    height: 25px;
+    margin: inherit;
+    background-color: #14345f;
+    text-align: center;
+}
+
+
+.center {
+    color: #ffffff;
+}
+
+
+p {
+    color: #000000;
+}
+
+
