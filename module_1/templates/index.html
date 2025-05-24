@@ -2,7 +2,7 @@
 
 
 {% block title %}
-<h1>Welcome to Taylor's Website!</h1>
+<h1>Welcome to My Website!</h1>
 {% endblock %}
 
 
@@ -12,19 +12,37 @@
 <div class="float-container">
 
     <div class="float-child">
+
+        <h2>High Level Summary:</h2>
+        <p>My name is Taylor Reininger. I'm a Senior Machine Learning Engineer at the 
+            Johns Hopkins University Applied Physics Laboratory with 9 years of experience
+            applying AI/ML and software to some of the world's toughest problems! Prior to 
+            working at the lab, I received my B.S. and M.S. in Mechanical Engineering from
+            North Carolina State University in Raleigh, NC, where I specialized in optimal 
+            control. 
+        </p>
+
+        <p>In my spare time, I love cooking, traveling the world, and spending time
+            with my rambunctious border collie puppy! I consider continuous learning a way
+            of life, and have taken an additional 22 courses since getting my last degree. 
+            As many will attest, the more you learn, the more you realize you don't know. 
+        </p>
+
+        <p>I'm excited to be here learning modern software concepts and building web apps. 
+            I can already see a bunch of ways to use these topics in my role and in my hobbies. 
+            Please feel free to reach out to me if you'd like to connect!
+        </p>
+
+    </div>
+
+    <div class="float-child">
         
         <img src="{{url_for('static', filename='professional_headshot_web.jpg')}}" align="center" style="width:400px;height:400px;"/>
 
     </div>
 
-    <div class="float-child">
-
-        <p>My name is Taylor</p>
-
-    </div>
 
 </div>
-
 
 
 {% endblock %}

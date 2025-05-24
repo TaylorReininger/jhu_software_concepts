@@ -1,1 +1,44 @@
 {% extends "base.html" %}
+
+
+{% block title %}
+<h1>Contact Me</h1>
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="float-container">
+
+    <div class="float-child">
+        
+        <img src="{{url_for('static', filename='cliffs_moher.jpg')}}" align="center" style="width:400px;height:400px;"/>
+
+    </div>
+
+
+    <div class="float-child">
+
+        <h2>Contact Information:</h2>
+        <p>
+
+            <li>
+                Email: <a href="mailto:treinin2@jh.edu">treinin2@jh.edu</a>
+            </li>
+            <li>
+                LinkedIn: <a href="http://www.linkedin.com/in/taylorreininger">www.linkedin.com/in/taylorreininger</a>
+                
+            </li>
+            <li>
+                Personal Website: <a href="http://www.TaylorReininger.com">www.TaylorReininger.com</a>
+            </li>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
