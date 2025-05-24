@@ -8,7 +8,6 @@
     background-color: #313131;
 }
 
-
 /* This is the portion of the page that will display content */
 .container {
     max-width: 1000px;
@@ -16,7 +15,6 @@
     display: block;
     overflow: auto;
     height: 100%;
-    margin: auto;
     background-color: #313131;
 }
 
@@ -24,7 +22,6 @@
 .banner {
     width: 100%;
     height: 60px;
-    margin: inherit;
     background-color: #14345f;
 }
 
@@ -33,7 +30,6 @@
 
     width: 100%;
     min-height: 1080px;
-    margin: inherit;
     background-color: #bbbbbb;
 
 }
@@ -69,33 +65,33 @@
     padding: 20px;
 }  
 
-
+/* Indentation for list bullets */
 li {
     margin-left: 20px;
 }
 
-
-/*  */
+/* Custom p1 text */
 p1 { 
     display: block;
     color: #ffffff;
 }
 
-/*  */
+/* Standard paragraph format */
 p {
     color: #000000;
 }
 
-/*  */
+/* Standard heading format */
 h1 {
     text-align: center;
 }
 
-/*  */
+/* Standard heading format */
 h2 {
     text-align: left;
 }
 
+/* Monospaced text for code/libraries */
 .mono {
     font-family: monospace;
 }
