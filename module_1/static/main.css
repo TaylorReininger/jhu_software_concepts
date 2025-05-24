@@ -34,7 +34,7 @@
     width: 100%;
     min-height: 1080px;
     margin: inherit;
-    background-color: #a0a0a0;
+    background-color: #bbbbbb;
 
 }
 
@@ -62,6 +62,18 @@
     padding: 20px;
 }  
 
+/* This is a div intended to be by itself */
+.float-child2 {
+    width: 100%;
+    float: left;
+    padding: 20px;
+}  
+
+
+li {
+    margin-left: 20px;
+}
+
 
 /*  */
 p1 { 
@@ -82,4 +94,8 @@ h1 {
 /*  */
 h2 {
     text-align: left;
+}
+
+.mono {
+    font-family: monospace;
 }
