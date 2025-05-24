@@ -1,0 +1,83 @@
+<!-- 
+This is the abstract base template to be implemented by each child template
+-->
+
+<!doctype html>
+<html lang="en-US">
+
+  <head>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- My custom CSS file -->
+    <link rel="stylesheet" href="../static/main.css">
+
+    <title>Taylor's Site</title>
+  </head>
+
+  <body>
+
+    <!-- Using divs to make page look more organized -->
+    <div class="total">
+      <div class="container">
+
+        <!-- Navigation banner -->
+        <div class="banner">
+          <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #14345f; float: right;">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav" >
+
+                <!-- 
+                Use variable "curr_page", which was passed into the webapp with Flask to perform logic 
+                on which of the navbar links to display as "active"
+                -->
+                {% if curr_page == 'index' %}
+                  <a class="nav-item nav-link active" href="../">Home</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="../">Home</a>
+                {% endif %}
+
+
+                {% if curr_page == 'contact' %}
+                  <a class="nav-item nav-link active" href="../contact">Contact</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="../contact">Contact</a>
+                {% endif %}
+
+
+                {% if curr_page == 'projects' %}
+                  <a class="nav-item nav-link active" href="../projects">Projects</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="../projects">Projects</a>
+                {% endif %}
+
+
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Add the title and page content as variables with "block"s -->
+        <div class="content"> 
+
+          <h1>{% block title %}{% endblock %}</h1>
+
+          {% block content %}
+          {% endblock %}
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer"> 
+          <p1>Taylor J. Reininger, 2025</p1>
+        </div>
+        
+      </div>
+
+
+    </div>
+
+  </body>
+
+  </html>

@@ -1,0 +1,48 @@
+<!-- Inherits from base template -->
+{% extends "base.html" %}
+
+<!-- Pass the title into the base template -->
+{% block title %}
+<h1>Contact Me</h1>
+{% endblock %}
+
+
+<!-- Pass the meat of the page content into the base template -->
+{% block content %}
+
+
+<!-- Create side by side divs to organize the content better -->
+<div class="float-container">
+
+    <!-- This is another photo of me -->
+    <div class="float-child">
+        
+        <img src="{{url_for('static', filename='cliffs_moher.jpg')}}" style="width: 400px; height: 400px;"/>
+
+    </div>
+
+    <!-- This is my contect information -->
+    <div class="float-child">
+
+        <h2>Contact Information:</h2>
+        <p>
+
+            <li>
+                Email: <a href="mailto:treinin2@jh.edu">treinin2@jh.edu</a>
+            </li>
+            <li>
+                LinkedIn: <a href="http://www.linkedin.com/in/taylorreininger">www.linkedin.com/in/taylorreininger</a>
+                
+            </li>
+            <li>
+                Personal Website: <a href="http://www.TaylorReininger.com">www.TaylorReininger.com</a>
+            </li>
+
+        </p>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
