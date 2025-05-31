@@ -101,7 +101,9 @@ class Scrape:
 
             # If this row is a header, store the previously built row list and start a new one
             else:
-                this_page_data.append(curr_line)
+                # Store current line if it's not empty
+                if curr_line:
+                    this_page_data.append(curr_line)
                 curr_line = this_row
                 
         # Make sure to catch the last row we were building
