@@ -37,23 +37,54 @@ class Clean
 
 
 
-path_pkl = 'test_25.pkl'
 
-# Check that the file is created and is readable
-if os.path.exists(path_pkl):
-
-    # Load in the data from the pickle file
-    with open(path_pkl, 'rb') as file:
-        data = pickle.load(file)
+class Clean:
+    
+    def __init__(self):
+        self.data_clean = None
+        self.data_raw = None
 
 
-print('------------------------------------')
-print(data[0])
+    def _load_pickle(self, path_pkl: str) -> None:
 
-print('------------------------------------')
-print(data[1])
+        # Check that the file exists
+        if os.path.exists(path_pkl):
+
+            # Load in the data from the pickle file
+            with open(path_pkl, 'rb') as file:
+                self.data_raw = pickle.load(file)
+
+        else:
+            print('WARNING: File does not exist')
+
+    def _clean_row(self, row: str):
+        return True
+
+    def clean_data(self, path_pkl):
+    
+        self._load_pickle(path_pkl)
+
+        for row in self.data_raw:
+
+            cleaned = self._clean_row(row)
+    
+        
+    def load_data(self):
+        pass
+    def save_data(self):
+        pass
 
 
+
+
+
+if __name__ == "__main__":
+
+    path_pkl = 'test_25.pkl'
+
+
+    c = Clean()
+    c.clean_data(path_pkl)
 
 
 
