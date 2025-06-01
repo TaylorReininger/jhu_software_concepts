@@ -24,7 +24,7 @@ ready to be analyzed in future assignments!"**
 
 To ensure we are authorized to scrape the grad cafe website, we first check the ```robots.txt``` file. 
 
-![tobots.txt Screenshot](robots_txt_screenshot.png)\
+![tobots.txt Screenshot](figs/robots_txt_screenshot.png)\
 Screenshot taken on 2025-05-30
 
 This file was also downloaded directly into this module [here](robots.txt)
@@ -93,16 +93,25 @@ pip install -r requirements.txt
 python scrape.py
 ```
 
+The output should looks something like this:
+![Example Scrape](figs/scraped.png)
+
+On my computer, this is scraping about 2700 entries a minute.
+
+
 5. Run the clean script with the default file names. 
 ```bash
 python clean.py
 ```
 
+![Example Clean](figs/cleaned.png)
+
+
 
 A screenshot of the resulting ```.json``` file can be seen here:
 
 
-
+![Example JSON](figs/json_file.png)
 
 
 
