@@ -40,10 +40,12 @@ https://www.thegradcafe.com/result/<ID>
 Program Design:
 
 class Scrape
+
+    def _scrape_page()
+
+    def _save_data()
+
     def scrape_grad_cafe()
-
-    def save_data()
-
 
 """
 
@@ -56,7 +58,9 @@ class Scrape:
         
         # Base URL
         self.url = "https://www.thegradcafe.com/survey/"
+        # Keep track of the total entries scraped
         self.num_entries = 0
+        # Store the data in a list
         self.data = []
 
     
@@ -69,13 +73,11 @@ class Scrape:
         html_bytes = page.read()
         html = html_bytes.decode("utf-8")
 
-
         # Use beautiful soup to parse the HTML
         soup = BeautifulSoup(html, "html.parser")
 
         # From the survey page, load in the whole table
         table_body = soup.find('tbody')
-
 
         # Extract the data of interest from the table
         rows = table_body.find_all('tr')

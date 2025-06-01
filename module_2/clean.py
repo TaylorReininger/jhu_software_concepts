@@ -40,8 +40,10 @@ class Clean
 class Clean:
     
     def __init__(self):
+        # Store the cleaned data in a dictionary
         self.data_clean = {}
-        self.data_raw = None
+        # Load the raw data in as a list
+        self.data_raw = []
 
 
     def _load_pickle(self, path_pkl: str) -> None:
@@ -160,9 +162,16 @@ class Clean:
 
     def load_data(self, path_json: str):
 
-        # Read the data in from a JSON file and store in the class member
-        with open(path_json, 'r') as file:
-            self.data_clean = json.load(file)
+        # Check that the file exists
+        if os.path.exists(path_json):
+
+            # Read the data in from a JSON file and store in the class member
+            with open(path_json, 'r') as file:
+                self.data_clean = json.load(file)
+
+        else:
+            print('WARNING: File does not exist')
+
 
 
     def save_data(self, path_json: str):
