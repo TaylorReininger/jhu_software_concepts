@@ -1,8 +1,8 @@
 import json
 import os
-import time
 import pickle
 import re
+
 
 """
 Notes:
@@ -34,8 +34,6 @@ class Clean
 
 
 """
-
-
 
 
 
@@ -147,7 +145,7 @@ class Clean:
 
 
 
-    def clean_data(self, path_pkl):
+    def clean_data(self, path_pkl: str):
     
         # Load in the data we scraped from the web
         self._load_pickle(path_pkl)
@@ -159,13 +157,19 @@ class Clean:
             self.data_clean[index_entry] = cleaned
             index_entry += 1
         
-    def load_data(self):
-        pass
+
+    def load_data(self, path_json: str):
+
+        # Read the data in from a JSON file and store in the class member
+        with open(path_json, 'r') as file:
+            self.data_clean = json.load(file)
 
 
-    def save_data(self, path_json):
+    def save_data(self, path_json: str):
 
+        # Write the data out in a JSON file
         with open(path_json, 'w') as file:
+            # Dump to file, set indent and ascii settings
             json.dump(self.data_clean, file, indent=4, sort_keys=False, ensure_ascii=False)
 
 
@@ -179,10 +183,14 @@ if __name__ == "__main__":
     c = Clean()
     c.clean_data(path_pkl)
 
-    #print(c.data_clean)
-
     path_json = 'clean_25.json'
     c.save_data(path_json)
+
+    c2 = Clean()
+    c2.load_data(path_json)
+
+    print(c2.data_clean)
+
 
 
 
