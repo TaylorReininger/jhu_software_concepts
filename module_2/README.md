@@ -114,6 +114,7 @@ A screenshot of the resulting ```.json``` file can be seen here:
 ![Example JSON](figs/json_file.png)
 
 
+The full ```.json``` file can be accessed [here](application_data.json)
 
 
 ## Known Issues

@@ -186,13 +186,13 @@ class Clean:
 
 if __name__ == "__main__":
 
-    path_pkl = 'test_10k.pkl'
+    path_pkl = 'apps_10k.pkl'
 
 
     c = Clean()
     c.clean_data(path_pkl)
 
-    path_json = 'clean_10k.json'
+    path_json = 'application_data.json'
     c.save_data(path_json)
 
     c2 = Clean()

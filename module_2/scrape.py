@@ -162,7 +162,7 @@ if __name__ == "__main__":
     s = Scrape()
 
     # Call the method to scrape with the desired input parameters
-    path_pkl = 'test_10k.pkl'
+    path_pkl = 'apps_10k.pkl'
     s.scrape_grad_cafe(10000, path_pkl)
 
     # Check that the file is created and is readable
