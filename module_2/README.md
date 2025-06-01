@@ -6,7 +6,7 @@ trinin2@jh.edu\
 EN.605.256\
 2025-06-01
 
-[Submission Link](https://github.com/TaylorReininger/jhu_software_concepts/tree/main/module_2)
+[Link to GitHub module](https://github.com/TaylorReininger/jhu_software_concepts/tree/main/module_2)
 
 ## Web Scraping Assignment
 
