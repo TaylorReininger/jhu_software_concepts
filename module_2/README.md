@@ -29,6 +29,7 @@ Screenshot taken on 2025-05-30
 
 This file was also downloaded directly into this module [here](robots.txt)
 
+There is no restriction preventing us from using ```urllib``` and ```BeautifulSoup``` to scrape this website as long as we don't scrape ```/cgi-bin/``` or ```/index-ad-test.php```. 
 
 
 ## Implementation
