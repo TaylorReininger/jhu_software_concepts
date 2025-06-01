@@ -42,7 +42,7 @@ class Clean
 class Clean:
     
     def __init__(self):
-        self.data_clean = None
+        self.data_clean = {}
         self.data_raw = None
 
 
@@ -57,6 +57,7 @@ class Clean:
 
         else:
             print('WARNING: File does not exist')
+
 
     def _clean_row(self, row: str):
 
@@ -90,7 +91,14 @@ class Clean:
         cleaned['semester'] = details[1]
 
         # Look for GPA
-        gpa = re.search('^GPA [0-9]*\.[0.9]+*')
+        gpa = re.search('GPA [0-9]+.[0-9]+', row[5])
+        if gpa:
+            # Extract the GPA score
+            gpa_score = re.search('[0-9]+.[0-9]+', gpa.group(0))
+            cleaned['gpa'] = gpa_score.group(0)
+        else:
+            cleaned['gpa'] = None
+        
 
         # Check for "International" or "American"
         if 'International' in details:
@@ -100,33 +108,65 @@ class Clean:
         else:
             cleaned['american'] = None
 
+        # Search for a GRE score
+        gre = re.search('GRE [0-9]+', row[5])
+        if gre:
+            # Extract the GRE score
+            gre_score = re.search('[0-9]+', gre.group(0))
+            cleaned['gre'] = gre_score.group(0)
+        else:
+            cleaned['gre'] = None
+        
+        # Search for a GRE V score
+        grev = re.search('GRE V [0-9]+', row[5])
+        if grev:
+            # Extract the GRE V score
+            grev_score = re.search('[0-9]+', grev.group(0))
+            cleaned['grev'] = grev_score.group(0)
+        else:
+            cleaned['grev'] = None
+        
+        # Search for GRE AW score
+        greaw = re.search('GRE AW [0-9]+.[0-9]+', row[5])
+        if greaw:
+            # Extract the GRE AW score
+            greaw_score = re.search('[0-9]+.[0-9]+', greaw.group(0))
+            cleaned['greaw'] = greaw_score.group(0)
+        else:
+            cleaned['greaw'] = None
+        
+        # Extract comments if applicable
+        if len(row) >= 7:
+            # Remove this weird newline thing that shows up sometimes
+            cleaned['notes'] = row[6].replace('\r\n\r\n', ' ').replace('\r\n', ' ')
+        else:
+            cleaned['notes'] = None
 
-        gre = re.search('GRE \d+')
-        grev = re.search('GRE V \d+')
-        greaw = re.search('GRE AW \d+')
+        # Return the cleaned dictionary
+        return cleaned
 
 
-        print(row)
-        x = 1
-
-
-
-        return True
 
     def clean_data(self, path_pkl):
     
+        # Load in the data we scraped from the web
         self._load_pickle(path_pkl)
 
+        # Clean each entry and store it in a dictionary
+        index_entry = 0
         for row in self.data_raw:
-
             cleaned = self._clean_row(row)
-    
+            self.data_clean[index_entry] = cleaned
+            index_entry += 1
         
     def load_data(self):
         pass
-    def save_data(self):
-        pass
 
+
+    def save_data(self, path_json):
+
+        with open(path_json, 'w') as file:
+            json.dump(self.data_clean, file, indent=4, sort_keys=False, ensure_ascii=False)
 
 
 
@@ -139,7 +179,10 @@ if __name__ == "__main__":
     c = Clean()
     c.clean_data(path_pkl)
 
+    #print(c.data_clean)
 
+    path_json = 'clean_25.json'
+    c.save_data(path_json)
 
 
 
