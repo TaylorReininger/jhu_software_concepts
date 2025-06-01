@@ -127,6 +127,9 @@ class Scrape:
             print('Please delete it or choose another name, then try again')
             return
 
+        # Start a run timer for some basic stats
+        time_start = time.time()
+
         # Go through as many pages as needed to meet our desired number of entries
         index_page = 1
         while self.num_entries < num_apps:
@@ -144,6 +147,12 @@ class Scrape:
         # Save off the data as a pickle file
         self._save_data(save_path)
 
+        # Stop the timer
+        time_end = time.time()
+
+        # Display stats
+        stats = "Scraped %d entries in %4.2f seconds"%(self.num_entries, (time_end - time_start))
+        print(stats)
 
 
 
