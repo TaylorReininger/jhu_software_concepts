@@ -1,12 +1,10 @@
-from bs4 import BeautifulSoup
-from urllib import parse
-from urllib.request import urlopen
 import json
-
-
 import os
-import time
 import pickle
+import time
+
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
 
 
 """
@@ -164,8 +162,8 @@ if __name__ == "__main__":
     s = Scrape()
 
     # Call the method to scrape with the desired input parameters
-    path_pkl = 'test_25.pkl'
-    s.scrape_grad_cafe(25, path_pkl)
+    path_pkl = 'test_10k.pkl'
+    s.scrape_grad_cafe(10000, path_pkl)
 
     # Check that the file is created and is readable
     if os.path.exists(path_pkl):
@@ -174,4 +172,5 @@ if __name__ == "__main__":
         with open(path_pkl, 'rb') as file:
             stuff = pickle.load(file)
 
+        print('Sanity check:')
         print(len(stuff))

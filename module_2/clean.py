@@ -186,19 +186,21 @@ class Clean:
 
 if __name__ == "__main__":
 
-    path_pkl = 'test_25.pkl'
+    path_pkl = 'test_10k.pkl'
 
 
     c = Clean()
     c.clean_data(path_pkl)
 
-    path_json = 'clean_25.json'
+    path_json = 'clean_10k.json'
     c.save_data(path_json)
 
     c2 = Clean()
     c2.load_data(path_json)
 
-    print(c2.data_clean)
+    # Display stats
+    stats = "Cleaned %d entries"%(len(c2.data_clean.keys()))
+    print(stats)
 
 
 
