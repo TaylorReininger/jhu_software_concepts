@@ -1,14 +1,14 @@
 # Module 2
 
+## Author
 Taylor J. Reininger\
 trinin2@jh.edu\
 EN.605.256\
 2025-06-01
 
+[Submission Link]()
 
-
-
-## Assignment
+## Web Scraping Assignment
 
 From the homework instructions:
 
@@ -18,7 +18,7 @@ using several of the string methods taught in class this week. Your resultant ou
 dictonaries of informaton covering 1000nds of student’s graduate school acceptance statistics – all
 ready to be analyzed in future assignments!"**
 
-
+Due 2025-06-01.
 
 ## Legal
 
@@ -32,7 +32,7 @@ This file was also downloaded directly into this module [here](robots.txt)
 There is no restriction preventing us from using ```urllib``` and ```BeautifulSoup``` to scrape this website as long as we don't scrape ```/cgi-bin/``` or ```/index-ad-test.php```. 
 
 
-## Implementation
+## Approach
 
 - I am using Python==3.12
 - I am using BeautifulSoup4 as our webscraping framework
