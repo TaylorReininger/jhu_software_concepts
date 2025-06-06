@@ -68,8 +68,8 @@ DROP DATABASE name_of_db        # Delete (drop) the database
 exit                            # Disconnect from the PostgreSQL instance
 ```
 
-
 """
+
 
 # Database name
 name_db = 'test_db'
@@ -126,3 +126,7 @@ with psycopg.connect(dbname=name_db, user="postgres") as conn:
 
         # Commit the changes to the table
         conn.commit()
+
+
+
+
