@@ -1,0 +1,49 @@
+<!-- 
+This is the abstract base template to be implemented by each child template
+-->
+
+<!doctype html>
+<html lang="en-US">
+
+  <head>
+
+    <!-- My custom CSS file -->
+    <link rel="stylesheet" href="../static/main.css">
+
+    <title>Taylor's Site</title>
+  </head>
+
+  <body>
+
+    <!-- Using divs to make page look more organized -->
+    <div class="total">
+      <div class="container">
+
+        <!-- Nice looking header -->
+        <div class="banner">
+
+        </div>
+
+        <!-- Add the title and page content as variables with "block"s -->
+        <div class="content"> 
+
+          <h1>{% block title %}{% endblock %}</h1>
+
+          {% block content %}
+          {% endblock %}
+
+        </div>
+
+        <!-- Footer -->
+        <div class="footer"> 
+          <p1>Taylor J. Reininger, 2025</p1>
+        </div>
+        
+      </div>
+
+
+    </div>
+
+  </body>
+
+  </html>
