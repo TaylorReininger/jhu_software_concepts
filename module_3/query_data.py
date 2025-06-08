@@ -224,19 +224,6 @@ class QueryData:
         return num_hopkins_ms_cs
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
 
     # Create the query data object
