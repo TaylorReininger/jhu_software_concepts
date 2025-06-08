@@ -196,10 +196,10 @@ class LoadData:
 
 
     def delete_table(self):
-
         """
         Deletes a table from the database (handy for clearing old entries while debuggin)
         """
+        
         # Extract class members
         name_db = self.name_db
         name_table = self.name_table
