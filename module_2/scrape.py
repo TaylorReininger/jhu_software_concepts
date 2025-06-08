@@ -108,7 +108,7 @@ class Scrape:
                 curr_line = this_row
 
                 # Get the URL for the detailed page
-                anchor_tag = soup.find('a', attrs={'data-ext-page-id': '986111'})
+                anchor_tag = row.find('a', attrs={'data-ext-page-id': True})
                 if anchor_tag:
                     individual_url = anchor_tag.get('href')
                 else:
