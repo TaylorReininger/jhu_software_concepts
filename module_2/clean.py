@@ -97,10 +97,10 @@ class Clean:
         cleaned['semester'] = details[1]
 
         # Look for GPA
-        gpa = re.search('GPA [0-9]+.[0-9]+', row[6])
+        gpa = re.search(r'GPA \d+\.[0-9]+', row[6])
         if gpa:
             # Extract the GPA score
-            gpa_score = re.search('[0-9]+.[0-9]+', gpa.group(0))
+            gpa_score = re.search(r'\d+\.[0-9]+', gpa.group(0))
             cleaned['gpa'] = gpa_score.group(0)
         else:
             cleaned['gpa'] = None
@@ -132,11 +132,12 @@ class Clean:
         else:
             cleaned['grev'] = None
         
+        r'GPA \d+\.[0-9]+'
         # Search for GRE AW score
-        greaw = re.search('GRE AW [0-9]+.[0-9]+', row[6])
+        greaw = re.search(r'GRE AW \d+\.[0-9]+', row[6])
         if greaw:
             # Extract the GRE AW score
-            greaw_score = re.search('[0-9]+.[0-9]+', greaw.group(0))
+            greaw_score = re.search(r'\d+\.[0-9]+', greaw.group(0))
             cleaned['greaw'] = greaw_score.group(0)
         else:
             cleaned['greaw'] = None

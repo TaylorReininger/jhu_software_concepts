@@ -173,7 +173,7 @@ if __name__ == "__main__":
 
     # Call the method to scrape with the desired input parameters
     path_pkl = 'apps_10k.pkl'
-    s.scrape_grad_cafe(10, path_pkl)
+    s.scrape_grad_cafe(300, path_pkl)
 
     # Check that the file is created and is readable
     if os.path.exists(path_pkl):
