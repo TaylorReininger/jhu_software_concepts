@@ -134,17 +134,23 @@ class QueryData:
         text_query = """SELECT 
             %s
             FROM %s
-            WHERE %s = 'American' 
+            WHERE %s = 'true' 
             AND %s = '%s';
             """%('gpa', self.name_table, 'us_or_international', 'term', self.current_term)
 
         self.cur.execute(text_query)
         # Print outputs
         recent_us_gpas = self.cur.fetchall()
+        recent_us_gpas = [v[0] for v in recent_us_gpas if v[0] >= 0]
+        sum_gpas = 0
         if len(recent_us_gpas) > 1:
-            av_us = sum([a[0] for a in recent_us_gpas])/len(recent_us_gpas)
+            for g in recent_us_gpas:
+                sum_gpas += g
+
+            av_us = sum_gpas/len(recent_us_gpas)
         else:
             av_us = -1
+
         print("Here's your output: %s"%(av_us))
 
         return av_us

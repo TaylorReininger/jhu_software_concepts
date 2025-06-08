@@ -56,9 +56,12 @@
 
 /* This is a div intended to go side by side with another */
 .float-child {
-    width: 80%;
+    width: 95%;
     float: center;
     padding: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: black;
 }  
 
 /* This is a div intended to be by itself */
