@@ -12,7 +12,14 @@ web_app = Flask(__name__)
 # Custom function to display web content (can use HTML syntax here if desired)
 def index():
     # This is my landing page
-    return render_template('index.html', curr_page='index')
+    return render_template('index.html', 
+        ans1 = 'Blah blah blah',
+        ans2 = 'Blah blah blah',
+        ans3 = 'Blah blah blah',
+        ans4 = 'Blah blah blah',
+        ans5 = 'Blah blah blah',
+        ans6 = 'Blah blah blah',
+        ans7 = 'Blah blah blah')
 
 
 # Run the webapp with appropriate IP and port values
