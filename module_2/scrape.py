@@ -2,6 +2,7 @@ import json
 import os
 import pickle
 import time
+import re
 
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
@@ -105,7 +106,16 @@ class Scrape:
                 if curr_line:
                     this_page_data.append(curr_line)
                 curr_line = this_row
-                
+
+                # Get the URL for the detailed page
+                anchor_tag = soup.find('a', attrs={'data-ext-page-id': '986111'})
+                if anchor_tag:
+                    individual_url = anchor_tag.get('href')
+                else:
+                    individual_url = 'None'
+                # Store it in this row
+                curr_line.append(individual_url)
+
         # Make sure to catch the last row we were building
         this_page_data.append(curr_line)
 
@@ -163,7 +173,7 @@ if __name__ == "__main__":
 
     # Call the method to scrape with the desired input parameters
     path_pkl = 'apps_10k.pkl'
-    s.scrape_grad_cafe(10000, path_pkl)
+    s.scrape_grad_cafe(10, path_pkl)
 
     # Check that the file is created and is readable
     if os.path.exists(path_pkl):
