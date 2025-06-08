@@ -1,5 +1,6 @@
 import json
 import psycopg
+import datetime
 
 """
 Notes:
@@ -36,7 +37,7 @@ name_json = '../module_2/application_data.json'
 
 # Database name
 name_db = 'module3'
-name_table = 'test_table'
+name_table = 'applications'
 
 
 
@@ -88,73 +89,78 @@ with psycopg.connect(dbname=name_db, user="postgres") as conn:
         for index in data:
 
             entry = data[index]
-            print(entry)
-            print(index)
-            print(type(index))
-            print(        entry['major'])
-            print(        entry['notes'])
-            print(        entry['date_entry'])
-            print(        'put_url_here.com')
-            print(        entry['decision'])
-            print(        entry['semester'])
-            print(        entry['american'])
-            print(        entry['gpa'])
-            print(        entry['gre'])
-            print(        entry['grev'])
-            print(        entry['greaw'])
-            print(        entry['degree'])
+            p_id = int(index)
+
+            # Handle optional fields
+            if entry['notes']:
+                notes = entry['notes']
+            else:
+                notes = 'None'
+
+            if entry['gpa']:
+                gpa = '%3.2f'%(float(entry['gpa']))
+            else:
+                gpa = '-1'
+
+            if entry['gre']:
+                gre = '%5.2f'%(float(entry['gre']))
+            else:
+                gre = '-1'
+
+            if entry['grev']:
+                grev = '%5.2f'%(float(entry['grev']))
+            else:
+                grev = '-1'
+
+            if entry['greaw']:
+                greaw = '%5.2f'%(float(entry['greaw']))
+            else:
+                greaw = '-1'
 
 
+            # Fix the date format
+            date_str = entry['date_entry']
+            formatted_date = datetime.datetime.strptime(date_str, "%B %d, %Y").strftime("%Y-%m-%d")
 
 
+            command = """
+                INSERT INTO applications (
+                    p_id,
+                    program,
+                    comments,
+                    date_added,
+                    url,
+                    status,
+                    term,
+                    us_or_international,
+                    gpa,
+                    gre,
+                    gre_v,
+                    gre_aw,
+                    degree) 
+                VALUES (%(p_id)s, %(program)s, %(comments)s, %(date_added)s, %(url)s, %(status)s, %(term)s, %(us_or_international)s, 
+                %(gpa)s, %(gre)s, %(gre_v)s, %(gre_aw)s, %(degree)s);
+            """
 
-            row = "%d, %s, %s, TO_DATE('%s', 'Month Day, Year'), %s, %s, %s, %s, %3.2f, %5.2f, %5.2f, %5.2f, %5.2f, %s"%(
-                    int(index), 
-                    entry['major'],
-                    entry['notes'],
-                    entry['date_entry'],
-                    'put_url_here.com',
-                    entry['decision'],
-                    entry['semester'],
-                    entry['american'],
-                    entry['gpa'],
-                    entry['gre'],
-                    entry['grev'],
-                    entry['greaw'],
-                    entry['degree']
-                )
+            # Prepare a dictionary of values to insert
+            values = {
+                'p_id': p_id,
+                'program': entry['major'],
+                'comments': notes,
+                'date_added': formatted_date,
+                'url': 'put_url_here.com',
+                'status': entry['decision'],
+                'term': entry['semester'],
+                'us_or_international': entry['american'],
+                'gpa': gpa,
+                'gre': gre,
+                'gre_v': grev,
+                'gre_aw': greaw,
+                'degree': entry['degree']
+            }
 
-            print(row)
-            print(taylor)    
-
-            index += 1
-
-
-
-        
-
-        
-
-
-        # Put data in the table
-        cur.execute("""
-            INSERT INTO %s (
-                p_id,
-                program,
-                comments,
-                date_added,
-                url,
-                status,
-                term,
-                us_or_international,
-                gpa,
-                gre,
-                gre_v,
-                gre_aw,
-                degree)
-                VALUES ()
-                );"""%(name_table, row
-                ))
+            # Execute the query with a dictionary of values
+            cur.execute(command, values)
 
 
 
