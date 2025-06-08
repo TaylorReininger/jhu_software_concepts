@@ -68,6 +68,13 @@ DROP DATABASE name_of_db        # Delete (drop) the database
 exit                            # Disconnect from the PostgreSQL instance
 ```
 
+- To delete a table from within a database, first enter the database (shown above), then do:
+```
+\dt    # Show all the tables
+DROP TABLE name_table CASCADE
+```
+
+
 """
 
 

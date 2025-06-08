@@ -40,7 +40,6 @@ name_db = 'module3'
 name_table = 'applications'
 
 
-
 # Load in and extract the data from the JSON
 with open(name_json, 'r') as f:
     # Load the JSON data into a Python object
@@ -148,7 +147,7 @@ with psycopg.connect(dbname=name_db, user="postgres") as conn:
                 'program': entry['major'],
                 'comments': notes,
                 'date_added': formatted_date,
-                'url': 'put_url_here.com',
+                'url': entry['url'],
                 'status': entry['decision'],
                 'term': entry['semester'],
                 'us_or_international': entry['american'],
@@ -163,7 +162,17 @@ with psycopg.connect(dbname=name_db, user="postgres") as conn:
             cur.execute(command, values)
 
 
+        # Display all the content from the table at this stage
+        cur.execute("""
+            select * from %s;
+            """%(name_table))
 
+        # Print outputs
+        a = cur.fetchall()
+        print(len(a))
+
+        # Commit the changes to the table
+        conn.commit()
 
 
 
