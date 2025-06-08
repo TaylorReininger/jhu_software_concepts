@@ -1,7 +1,10 @@
 
 
 
+# TODO
 
+- Go fix the way the international/American/Canadian thing is handled
+- re-scrape, clean, and put all the data in the database once everything is working!!!
 
 
 

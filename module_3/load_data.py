@@ -212,8 +212,6 @@ class LoadData:
 
 
 
-
-
 if __name__ == "__main__":
 
     # Create the load data object
