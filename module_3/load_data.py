@@ -32,147 +32,197 @@ sudo -u postgres createdb -O postgres module3
 
 """
 
-# JSON file name
-name_json = '../module_2/application_data.json'
 
-# Database name
-name_db = 'module3'
-name_table = 'applications'
+class LoadData:
 
+    def __init__(self):
 
-# Load in and extract the data from the JSON
-with open(name_json, 'r') as f:
-    # Load the JSON data into a Python object
-    data = json.load(f)
+        self.name_json = '../module_2/application_data.json'
+        self.name_db = 'module3'
+        self.name_table = 'applications'
 
 
-# Connect to a postgresql server (must follow steps from above)
-with psycopg.connect(dbname=name_db, user="postgres") as conn:
+    def load(self):
+
+        name_json = self.name_json
+        name_db = self.name_db
+        name_table = self.name_table
+
+        # Load in and extract the data from the JSON
+        with open(name_json, 'r') as f:
+            # Load the JSON data into a Python object
+            data = json.load(f)
 
 
-    # Open a cursor to perform database operations
-    with conn.cursor() as cur:
-       
-
-        # Check if the table exists
-        cur.execute("""
-                SELECT COUNT(*) FROM information_schema.tables 
-                WHERE table_name = '%s' 
-                AND table_schema = 'public';
-            """%(name_table))
-
-        matches = cur.fetchone()
-
-        # Create a the table if needed
-        if not matches[0]:
-            print('Creating table')
-            cur.execute("""
-                CREATE TABLE %s(
-                p_id int,
-                program TEXT,
-                comments TEXT,
-                date_added date,
-                url TEXT,
-                status TEXT,
-                term TEXT,
-                us_or_international TEXT,
-                gpa FLOAT,
-                gre FLOAT,
-                gre_v FLOAT,
-                gre_aw FLOAT,
-                degree TEXT)
-                ;"""%(name_table))
+        # Connect to a postgresql server (must follow steps from above)
+        with psycopg.connect(dbname=name_db, user="postgres") as conn:
 
 
-        # Iterate through the elements in the data
-        for index in data:
+            # Open a cursor to perform database operations
+            with conn.cursor() as cur:
+            
 
-            entry = data[index]
-            p_id = int(index)
+                # Check if the table exists
+                cur.execute("""
+                        SELECT COUNT(*) FROM information_schema.tables 
+                        WHERE table_name = '%s' 
+                        AND table_schema = 'public';
+                    """%(name_table))
 
-            # Handle optional fields
-            if entry['notes']:
-                notes = entry['notes']
-            else:
-                notes = 'None'
+                matches = cur.fetchone()
 
-            if entry['gpa']:
-                gpa = '%3.2f'%(float(entry['gpa']))
-            else:
-                gpa = '-1'
-
-            if entry['gre']:
-                gre = '%5.2f'%(float(entry['gre']))
-            else:
-                gre = '-1'
-
-            if entry['grev']:
-                grev = '%5.2f'%(float(entry['grev']))
-            else:
-                grev = '-1'
-
-            if entry['greaw']:
-                greaw = '%5.2f'%(float(entry['greaw']))
-            else:
-                greaw = '-1'
-
-
-            # Fix the date format
-            date_str = entry['date_entry']
-            formatted_date = datetime.datetime.strptime(date_str, "%B %d, %Y").strftime("%Y-%m-%d")
+                # Create a the table if needed
+                if not matches[0]:
+                    print('Creating table')
+                    cur.execute("""
+                        CREATE TABLE %s(
+                        p_id int,
+                        program TEXT,
+                        comments TEXT,
+                        date_added date,
+                        url TEXT,
+                        status TEXT,
+                        term TEXT,
+                        us_or_international TEXT,
+                        gpa FLOAT,
+                        gre FLOAT,
+                        gre_v FLOAT,
+                        gre_aw FLOAT,
+                        degree TEXT)
+                        ;"""%(name_table))
 
 
-            command = """
-                INSERT INTO applications (
-                    p_id,
-                    program,
-                    comments,
-                    date_added,
-                    url,
-                    status,
-                    term,
-                    us_or_international,
-                    gpa,
-                    gre,
-                    gre_v,
-                    gre_aw,
-                    degree) 
-                VALUES (%(p_id)s, %(program)s, %(comments)s, %(date_added)s, %(url)s, %(status)s, %(term)s, %(us_or_international)s, 
-                %(gpa)s, %(gre)s, %(gre_v)s, %(gre_aw)s, %(degree)s);
-            """
+                # Iterate through the elements in the data
+                for index in data:
 
-            # Prepare a dictionary of values to insert
-            values = {
-                'p_id': p_id,
-                'program': entry['major'],
-                'comments': notes,
-                'date_added': formatted_date,
-                'url': entry['url'],
-                'status': entry['decision'],
-                'term': entry['semester'],
-                'us_or_international': entry['american'],
-                'gpa': gpa,
-                'gre': gre,
-                'gre_v': grev,
-                'gre_aw': greaw,
-                'degree': entry['degree']
-            }
+                    entry = data[index]
+                    p_id = int(index)
 
-            # Execute the query with a dictionary of values
-            cur.execute(command, values)
+                    # Handle optional fields
+                    if entry['notes']:
+                        notes = entry['notes']
+                    else:
+                        notes = 'None'
+
+                    if entry['gpa']:
+                        gpa = '%3.2f'%(float(entry['gpa']))
+                    else:
+                        gpa = '-1'
+
+                    if entry['gre']:
+                        gre = '%5.2f'%(float(entry['gre']))
+                    else:
+                        gre = '-1'
+
+                    if entry['grev']:
+                        grev = '%5.2f'%(float(entry['grev']))
+                    else:
+                        grev = '-1'
+
+                    if entry['greaw']:
+                        greaw = '%5.2f'%(float(entry['greaw']))
+                    else:
+                        greaw = '-1'
+
+                    # Fix the date format
+                    date_str = entry['date_entry']
+                    formatted_date = datetime.datetime.strptime(date_str, "%B %d, %Y").strftime("%Y-%m-%d")
+
+                    # Create a parameterized SQL query
+                    command = """
+                        INSERT INTO applications (
+                            p_id,
+                            program,
+                            comments,
+                            date_added,
+                            url,
+                            status,
+                            term,
+                            us_or_international,
+                            gpa,
+                            gre,
+                            gre_v,
+                            gre_aw,
+                            degree) 
+                        VALUES (%(p_id)s, %(program)s, %(comments)s, %(date_added)s, %(url)s, %(status)s, %(term)s, %(us_or_international)s, 
+                        %(gpa)s, %(gre)s, %(gre_v)s, %(gre_aw)s, %(degree)s);
+                    """
+
+                    # Prepare a dictionary of values to insert
+                    values = {
+                        'p_id': p_id,
+                        'program': entry['major'],
+                        'comments': notes,
+                        'date_added': formatted_date,
+                        'url': entry['url'],
+                        'status': entry['decision'],
+                        'term': entry['semester'],
+                        'us_or_international': entry['american'],
+                        'gpa': gpa,
+                        'gre': gre,
+                        'gre_v': grev,
+                        'gre_aw': greaw,
+                        'degree': entry['degree']
+                    }
+
+                    # Execute the query with a dictionary of values
+                    cur.execute(command, values)
 
 
-        # Display all the content from the table at this stage
-        cur.execute("""
-            select * from %s;
-            """%(name_table))
+                # Display all the content from the table at this stage
+                cur.execute("""
+                    select * from %s;
+                    """%(name_table))
 
-        # Print outputs
-        a = cur.fetchall()
-        print(len(a))
+                # Print outputs
+                table_content = cur.fetchall()
+                print("The table now has %d rows in it"%(len(table_content)))
 
-        # Commit the changes to the table
-        conn.commit()
+                # Commit the changes to the table
+                conn.commit()
+
+
+    def delete_table(self):
+
+        name_db = self.name_db
+        name_table = self.name_table
+
+        # Connect to a postgresql server (must follow steps from above)
+        with psycopg.connect(dbname=name_db, user="postgres") as conn:
+
+            # Open a cursor to perform database operations
+            with conn.cursor() as cur:
+
+                # Check if the table exists
+                cur.execute("""
+                        SELECT COUNT(*) FROM information_schema.tables 
+                        WHERE table_name = '%s' 
+                        AND table_schema = 'public';
+                    """%(name_table))
+
+                matches = cur.fetchone()
+
+                # Create a the table if needed
+                if matches[0]:
+                    print('Deleting table')
+                    # Drop the table (replace 'table_name' with your actual table name)
+                    cur.execute("""DROP TABLE %s;"""%(name_table))
+                    # Commit the changes to the table
+                    conn.commit()
+
+
+
+
+
+if __name__ == "__main__":
+
+    # Create the load data object
+    ld = LoadData()
+    # Clear any existing tables before populating
+    ld.delete_table()
+    # Load all the data into a the database
+    ld.load()
+
 
 
 
