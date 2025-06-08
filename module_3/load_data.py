@@ -35,15 +35,29 @@ sudo -u postgres createdb -O postgres module3
 
 class LoadData:
 
-    def __init__(self):
+    def __init__(self, name_json=None, name_db='module3'):
+        """
+        Initializes the LoadData object and stores class members
+        """
 
-        self.name_json = '../module_2/application_data.json'
+        # Stores class members
+        # The JSON file path to load in
+        if not name_json:
+            self.name_json = './application_data.json'
+        else:
+            self.name_json = name_json
+        # The name of the existing database to write to
         self.name_db = 'module3'
+        # The name of the table to write the data into within the database
         self.name_table = 'applications'
 
 
     def load(self):
+        """
+        Loads all the data from the JSON file into the database
+        """
 
+        # Extract class members
         name_json = self.name_json
         name_db = self.name_db
         name_table = self.name_table
@@ -57,10 +71,8 @@ class LoadData:
         # Connect to a postgresql server (must follow steps from above)
         with psycopg.connect(dbname=name_db, user="postgres") as conn:
 
-
             # Open a cursor to perform database operations
-            with conn.cursor() as cur:
-            
+            with conn.cursor() as cur:           
 
                 # Check if the table exists
                 cur.execute("""
@@ -95,6 +107,7 @@ class LoadData:
                 # Iterate through the elements in the data
                 for index in data:
 
+                    # Extract this entry from the JSON data and get the entry ID
                     entry = data[index]
                     p_id = int(index)
 
@@ -184,6 +197,10 @@ class LoadData:
 
     def delete_table(self):
 
+        """
+        Deletes a table from the database (handy for clearing old entries while debuggin)
+        """
+        # Extract class members
         name_db = self.name_db
         name_table = self.name_table
 
@@ -215,7 +232,7 @@ class LoadData:
 if __name__ == "__main__":
 
     # Create the load data object
-    ld = LoadData()
+    ld = LoadData(name_json = '../module_2/application_data.json', name_db='module3')
     # Clear any existing tables before populating
     ld.delete_table()
     # Load all the data into a the database

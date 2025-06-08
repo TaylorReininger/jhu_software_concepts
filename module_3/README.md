@@ -12,8 +12,9 @@ EN.605.256\
 
 # TODO
 
-- Change "program" table column to University AND Department
+- Make name_db a variable supplied at object creation
 - re-scrape, clean, and put all the data in the database once everything is working!!!
+- Change "program" table column to University AND Department
 
 
 
@@ -96,6 +97,12 @@ python load_data.py
 6. Run the ```app.py``` file to open the web app and see the data
 ```bash
 python app.py
+```
+
+7. Open the web app by navigating your browser to the URL printed in the terminal
+```bash
+# Example URL
+http://127.0.0.1:8080
 ```
 
 
