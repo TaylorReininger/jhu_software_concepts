@@ -4,6 +4,7 @@
 # TODO
 
 - Go fix the way the international/American/Canadian thing is handled
+- Change "program" table column to University AND Department
 - re-scrape, clean, and put all the data in the database once everything is working!!!
 
 
@@ -19,7 +20,7 @@
 ## Limitations
 
 - Choosing to fill blank fields with -1 so they can still be floats
-
+- GPA scales are different (some out of 4, some higher)
 
 ## Citations
 

@@ -8,7 +8,7 @@ class QueryData:
 
         self.name_db = 'module3'
         self.name_table = 'applications'
-        self.current_term = 'Spring 2025'
+        self.current_term = 'Fall 2025'
 
         self.conn = psycopg.connect(dbname=self.name_db, user="postgres")
         self.cur = self.conn.cursor()
@@ -20,8 +20,10 @@ class QueryData:
 
         # Print outputs
         table_content = self.cur.fetchall()
-        print("The table has this content in it: %s"%(table_content))
-
+        #print("The table has this content in it: %s"%(table_content))
+        self.num_rows = len(table_content)
+        if self.num_rows < 1:
+            print('WARNING: Table is empty')
 
 
     def q1(self):
@@ -35,7 +37,9 @@ class QueryData:
         self.cur.execute(text_query)
         # Print outputs
         output = self.cur.fetchall()
-        print("Here's your output: %s"%(len(output)))
+        answer = len(output)
+        print("Here's your output: %s"%(answer))
+        return answer
 
 
     def q2(self):
@@ -43,13 +47,17 @@ class QueryData:
         # Problem 2: What percentage of entries are from international students (not American or Other) (to two decimal places)?
         text_query = """SELECT 
             %s
-            FROM %s;
-            """%('us_or_international', self.name_table)
+            FROM %s
+            WHERE %s = '%s';
+            """%('us_or_international', self.name_table, 'us_or_international', 'false')
 
         self.cur.execute(text_query)
         # Print outputs
         output = self.cur.fetchall()
-        #print("Here's your output: %s"%(output))
+
+        percentage = ((10000*len(output))//(self.num_rows))/100
+        print("Here's your output: %5.2f"%(percentage))
+        return percentage
 
 
     def q3(self):
@@ -64,7 +72,12 @@ class QueryData:
         self.cur.execute(text_query)
         # Print outputs
         gpa = self.cur.fetchall()
-        print("Here's your output: %s"%(gpa))
+
+        if len(gpa) > 1:
+            av_gpa = sum([a[0] for a in gpa])/len(gpa)
+        else:
+            av_gpa = -1
+        print("Here's your output: %s"%(av_gpa))
 
         text_query = """SELECT 
             %s
@@ -75,7 +88,11 @@ class QueryData:
         self.cur.execute(text_query)
         # Print outputs
         gre = self.cur.fetchall()
-        print("Here's your output: %s"%(gre))
+        if len(gre) > 1:
+            av_gre = sum([a[0] for a in gre])/len(gre)
+        else:
+            av_gre = -1
+        print("Here's your output: %s"%(av_gre))
 
         text_query = """SELECT 
             %s
@@ -86,7 +103,11 @@ class QueryData:
         self.cur.execute(text_query)
         # Print outputs
         gre_v = self.cur.fetchall()
-        print("Here's your output: %s"%(gre_v))
+        if len(gre_v) > 1:
+            av_gre_v = sum([a[0] for a in gre_v])/len(gre_v)
+        else:
+            av_gre_v = -1
+        print("Here's your output: %s"%(av_gre_v))
 
         text_query = """SELECT 
             %s
@@ -97,7 +118,13 @@ class QueryData:
         self.cur.execute(text_query)
         # Print outputs
         gre_aw = self.cur.fetchall()
-        print("Here's your output: %s"%(gre_aw))
+        if len(gre_aw) > 1:
+            av_gre_aw = sum([a[0] for a in gre_aw])/len(gre_aw)
+        else:
+            av_gre_aw = -1
+        print("Here's your output: %s"%(av_gre_aw))
+
+        return av_gpa, av_gre, av_gre_v, av_gre_aw
 
 
 
@@ -114,7 +141,13 @@ class QueryData:
         self.cur.execute(text_query)
         # Print outputs
         recent_us_gpas = self.cur.fetchall()
-        print("Here's your output: %s"%(recent_us_gpas))
+        if len(recent_us_gpas) > 1:
+            av_us = sum([a[0] for a in recent_us_gpas])/len(recent_us_gpas)
+        else:
+            av_us = -1
+        print("Here's your output: %s"%(av_us))
+
+        return av_us
 
 
     def q5(self):
@@ -128,8 +161,23 @@ class QueryData:
 
         self.cur.execute(text_query)
         # Print outputs
-        recent_acceptances = self.cur.fetchall()
-        print("Here's your output: %s"%(recent_acceptances))
+        decisions = self.cur.fetchall()
+        
+        count_acc = 0
+        if len(decisions) > 1:
+            for a in decisions:
+                if a[0] == 'Accepted':
+                    count_acc += 1
+
+            ratio = count_acc/len(decisions)
+            recent_acc_percentage = round(10000*ratio)/100
+
+        else:
+            recent_acc_percentage = -1
+
+        print("Here's your output: %s"%(recent_acc_percentage))
+
+        return recent_acc_percentage
 
 
     def q6(self):
@@ -145,7 +193,16 @@ class QueryData:
         self.cur.execute(text_query)
         # Print outputs
         recent_acceptance_gpa = self.cur.fetchall()
-        print("Here's your output: %s"%(recent_acceptance_gpa))
+        recent_acceptance_gpa = [v[0] for v in recent_acceptance_gpa if v[0] >= 0]
+
+        if len(recent_acceptance_gpa) > 1:
+            av_gpa_acc = sum(recent_acceptance_gpa)/len(recent_acceptance_gpa)
+        else:
+            av_gpa_acc = -1
+
+        print("Here's your output: %s"%(av_gpa_acc))
+
+        return av_gpa_acc
 
 
 
@@ -161,9 +218,10 @@ class QueryData:
 
         self.cur.execute(text_query)
         # Print outputs
-        hopkins_ms_cs = self.cur.fetchall()
-        print("Here's your output: %s"%(hopkins_ms_cs))
+        num_hopkins_ms_cs = len(self.cur.fetchall())
+        print("Here's your output: %s"%(num_hopkins_ms_cs))
 
+        return num_hopkins_ms_cs
 
 
 
