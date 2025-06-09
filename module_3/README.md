@@ -95,6 +95,14 @@ http://127.0.0.1:8080
 ![Web App Screenshot](figs/screenshot_webapp.png)
 
 
+## Essay
+
+My essay questions can be found here:
+
+[Essay PDF](limitations.pdf)
+
+
+
 
 ## Module 2 Changes
 
@@ -115,6 +123,7 @@ http://127.0.0.1:8080
 ## Citations
 
 - I found Llama3.1 extremely helpful with this homework.
+- I used this psycopg website for help with parameterized SQL queries: [link](https://www.psycopg.org/psycopg3/docs/basic/params.html)
 - I borrowed heavily from my module_1 web app.
 - I used data scraped and cleaned from module_2, but did have to re-scrape and clean the data.
 
