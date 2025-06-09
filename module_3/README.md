@@ -70,6 +70,12 @@ sudo -u postgres psql module3   # Note1: the user is set to postgres.
                                 # Note2: replace module3 with your desired name if not using the default
 ```
 
+You can check that the database exists like this:
+
+![Check Databases](figs/screenshot_databases.png)
+
+
+
 5. Open the ```load_data.py``` script and change the ```name_db``` to the desired value (default is ```module3```)
 ```bash
 python load_data.py
@@ -85,6 +91,10 @@ python app.py
 # Example URL
 http://127.0.0.1:8080
 ```
+
+![Web App Screenshot](figs/screenshot_webapp.png)
+
+
 
 ## Module 2 Changes
 
@@ -102,10 +112,9 @@ http://127.0.0.1:8080
 - Could potentially see malicious database injection code in the entries.
 
 
-
 ## Citations
 
 - I found Llama3.1 extremely helpful with this homework.
 - I borrowed heavily from my module_1 web app.
-- I used data scraped and cleaned from module_2.
+- I used data scraped and cleaned from module_2, but did have to re-scrape and clean the data.
 
