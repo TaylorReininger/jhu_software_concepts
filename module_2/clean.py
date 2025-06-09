@@ -14,8 +14,9 @@ columns of each list as shown:
 - col3 = Date added
 - col4 = Decision date
 - col5 = Junk from the additional options (throw away)
-- col6 = Semester, International/American, GPA, GRE scores (not all applicable for every entry)
-- col7 = OPTIONAL: notes
+- col6 = URL of details page
+- col7 = Semester, International/American, GPA, GRE scores (not all applicable for every entry)
+- col8 = OPTIONAL: notes
 
 
 Program Design:
@@ -61,9 +62,10 @@ class Clean:
 
     def _clean_row(self, row: str):
 
-        # All rows should have 6 or 7 columns. If not, something is wrong
-        if len(row) < 6 or len(row) > 7:
+        # All rows should have 7 or 8 columns. If not, something is wrong
+        if len(row) < 7 or len(row) > 8:
             print('WARNING: Bad row length of ' + str(len(row)))
+
 
         # Create a dictionary to store the cleaned data
         cleaned = {}
@@ -84,17 +86,21 @@ class Clean:
         cleaned['decision'] = decision[0].strip()
         cleaned['date_decision'] = decision[1].strip()
 
+
+        # The URL
+        cleaned['url'] = row[5]
+
         # The details are all in row 6 and is very unreliable. Using regex to find content if it exists
-        details = row[5].split('\n')
+        details = row[6].split('\n')
 
         # The semester is reliably the 2nd column
         cleaned['semester'] = details[1]
 
         # Look for GPA
-        gpa = re.search('GPA [0-9]+.[0-9]+', row[5])
+        gpa = re.search(r'GPA \d+\.[0-9]+', row[6])
         if gpa:
             # Extract the GPA score
-            gpa_score = re.search('[0-9]+.[0-9]+', gpa.group(0))
+            gpa_score = re.search(r'\d+\.[0-9]+', gpa.group(0))
             cleaned['gpa'] = gpa_score.group(0)
         else:
             cleaned['gpa'] = None
@@ -109,7 +115,7 @@ class Clean:
             cleaned['american'] = None
 
         # Search for a GRE score
-        gre = re.search('GRE [0-9]+', row[5])
+        gre = re.search('GRE [0-9]+', row[6])
         if gre:
             # Extract the GRE score
             gre_score = re.search('[0-9]+', gre.group(0))
@@ -118,7 +124,7 @@ class Clean:
             cleaned['gre'] = None
         
         # Search for a GRE V score
-        grev = re.search('GRE V [0-9]+', row[5])
+        grev = re.search('GRE V [0-9]+', row[6])
         if grev:
             # Extract the GRE V score
             grev_score = re.search('[0-9]+', grev.group(0))
@@ -126,19 +132,20 @@ class Clean:
         else:
             cleaned['grev'] = None
         
+        r'GPA \d+\.[0-9]+'
         # Search for GRE AW score
-        greaw = re.search('GRE AW [0-9]+.[0-9]+', row[5])
+        greaw = re.search(r'GRE AW \d+\.[0-9]+', row[6])
         if greaw:
             # Extract the GRE AW score
-            greaw_score = re.search('[0-9]+.[0-9]+', greaw.group(0))
+            greaw_score = re.search(r'\d+\.[0-9]+', greaw.group(0))
             cleaned['greaw'] = greaw_score.group(0)
         else:
             cleaned['greaw'] = None
         
         # Extract comments if applicable
-        if len(row) >= 7:
+        if len(row) >= 8:
             # Remove this weird newline thing that shows up sometimes
-            cleaned['notes'] = row[6].replace('\r\n\r\n', ' ').replace('\r\n', ' ')
+            cleaned['notes'] = row[7].replace('\r\n\r\n', ' ').replace('\r\n', ' ')
         else:
             cleaned['notes'] = None
 

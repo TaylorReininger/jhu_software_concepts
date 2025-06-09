@@ -13,3 +13,4 @@ For my work during JHU EN.605.256: Modern Software Concepts in Python
 
 - [Module 1](module_1): Personal Website
 - [Module 2](module_2): Web Scraping
+- [Module 3](module_3): SQL Data Analysis
