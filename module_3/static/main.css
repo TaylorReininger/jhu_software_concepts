@@ -6,6 +6,7 @@
     overflow: auto;
     width: 100%;
     background-color: #313131;
+    margin: 0;
 }
 
 /* This is the portion of the page that will display content */
@@ -25,12 +26,13 @@
 .banner {
     width: 100%;
     height: 60px;
+    margin: 0;
     background-color: #14345f;
 }
 
 /* This is the portion of the page with varying content */
 .content {
-
+    margin: 0;
     width: 100%;
     min-height: 1080px;
     background-color: #bbbbbb;

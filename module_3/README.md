@@ -9,25 +9,6 @@ EN.605.256\
 
 [Link to GitHub module](https://github.com/TaylorReininger/jhu_software_concepts/tree/main/module_3)
 
-
-# TODO
-
-- Make name_db a variable supplied at object creation
-- re-scrape, clean, and put all the data in the database once everything is working!!!
-- Change "program" table column to University AND Department
-
-
-
-## Things I've Had to Change
-
-- Had to go back to Module 2 and make sure to also capture the link to the insticator commenting page. 
-- Had to shift some of the column indexing to account for the new field in the cleaning script. 
-
-
-
-
-
-
 ## Approach
 
 - I am using Python==3.12
@@ -105,19 +86,26 @@ python app.py
 http://127.0.0.1:8080
 ```
 
+## Module 2 Changes
+
+- Had to go back to Module 2 and make sure to also capture the link to the insticator commenting page. 
+- Had to shift some of the column indexing to account for the new field in the cleaning script. 
+- Had to re-scrape the data and re-clean it. 
+- Made a copy of the new dataset into module_3 for use with this homework. 
 
 
 ## Limitations
 
-- I'm choosing to fill blank fields with -1 so they can still be floats
-- GPA scales are different (some out of 4, some higher)
-- Things like emojis, seeing GPAs with no decimal like "3 99" and other nonsense
-- Could potentially see malicious database injection code in the entries
-- 
+- I'm choosing to fill blank fields with -1 so they can still be floats.
+- GPA scales are different (some out of 4, some higher).
+- Things like emojis, seeing GPAs with no decimal like "3 99" and other nonsense are challenging.
+- Could potentially see malicious database injection code in the entries.
+
+
 
 ## Citations
 
-- I found Llama3.1 extremely helpful with this homework
-- I borrowed heavily from my module_1 web app
-- I used data scraped and cleaned from module_2
+- I found Llama3.1 extremely helpful with this homework.
+- I borrowed heavily from my module_1 web app.
+- I used data scraped and cleaned from module_2.
 

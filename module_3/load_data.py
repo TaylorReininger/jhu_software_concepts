@@ -111,6 +111,10 @@ class LoadData:
                     entry = data[index]
                     p_id = int(index)
 
+                    # Combine the university and department to make "program"
+                    program = '%s at %s'%(entry['major'], entry['university'])
+
+
                     # Handle optional fields
                     if entry['notes']:
                         notes = entry['notes']
@@ -164,7 +168,7 @@ class LoadData:
                     # Prepare a dictionary of values to insert
                     values = {
                         'p_id': p_id,
-                        'program': entry['major'],
+                        'program': program,
                         'comments': notes,
                         'date_added': formatted_date,
                         'url': entry['url'],
@@ -199,7 +203,7 @@ class LoadData:
         """
         Deletes a table from the database (handy for clearing old entries while debuggin)
         """
-        
+
         # Extract class members
         name_db = self.name_db
         name_table = self.name_table
@@ -232,7 +236,7 @@ class LoadData:
 if __name__ == "__main__":
 
     # Create the load data object
-    ld = LoadData(name_json = '../module_2/application_data.json', name_db='module3')
+    ld = LoadData(name_db='module3')
     # Clear any existing tables before populating
     ld.delete_table()
     # Load all the data into a the database

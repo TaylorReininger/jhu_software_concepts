@@ -254,12 +254,16 @@ class QueryData:
 
         # Problem 7: How many entries are from applicants who applied to JHU for a masters degrees in Computer Science?
         # Get data from db
+        degree = 'Computer Science'
+        uni = 'Johns Hopkins University'
+        program = '%s at %s'%(degree, uni)
+
         text_query = """SELECT 
             %s
             FROM %s
             WHERE %s = '%s'
             AND %s = '%s';
-            """%('p_id', self.name_table, 'program', 'JHU', 'degree', 'Masters')
+            """%('p_id', self.name_table, 'program', program, 'degree', 'Masters')
         self.cur.execute(text_query)
         
         # Process Hopkins CS MS data
