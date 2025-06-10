@@ -11,13 +11,14 @@ EN.605.256\
 ## Approach
 
 - I am using Python==3.12
+- I am using Pytest and a Test-Driven Development (TDD) Workflow to develop my classes
 
 
 ## Installation and Execution
 
 NOTE: These instructions assume the user either has Anaconda or another method of creating virtual environments already configured. 
 
-Follow these steps to configure and execut the web app:
+Follow these steps to configure and execut the tool:
 
 1. Create your virtual environment (Anaconda or Pyenv)
 ```bash

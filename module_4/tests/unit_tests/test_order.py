@@ -58,7 +58,7 @@ def test_str():
     assert sauce
 
     # Ensure the cheese is displayed correctly
-    cheese = re.search('Crust: [a-zA-Z]+', text)
+    cheese = re.search('Cheese: [a-zA-Z]+', text)
     assert cheese
 
         # Ensure the toppings are displayed correctly (as a list)

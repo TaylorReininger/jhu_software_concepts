@@ -35,11 +35,11 @@ def test_str():
     assert sauce
 
     # Ensure the cheese is displayed correctly
-    cheese = re.search('Crust: [a-zA-Z]+', text)
+    cheese = re.search('Cheese: [a-zA-Z]+', text)
     assert cheese
 
     # Ensure the toppings are displayed correctly (as a list)
-    toppings = re.search(r'Toppings: \[\'[a-zA-Z]+\' , \'[a-zA-Z]+\'\]', text)
+    toppings = re.search(r'Toppings: \[\'[a-zA-Z]+\', \'[a-zA-Z]+\'\]', text)
     assert toppings
 
     # Ensure the cost is displayed correctly
