@@ -5,6 +5,8 @@ import pytest
 from src.pizza import Pizza
 
 
+@pytest.fixture
+@pytest.mark.pizza
 def test_init():
 
     # Initialize a pizza object and 
@@ -13,6 +15,8 @@ def test_init():
     assert p.price > 0
 
 
+
+@pytest.mark.pizza
 def test_str():
 
 
@@ -44,6 +48,7 @@ def test_str():
 
 
 
+@pytest.mark.pizza
 def test_cost():
 
     # Initialize a pizza object and 
