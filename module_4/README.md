@@ -52,6 +52,7 @@ pip install --upgrade pip
 ```
 
 2. Navigate to the ```module_4``` folder of this repo
+
 3. Install the dependencies for the app
 ```bash
 # Install all the libraries in the requirements file
