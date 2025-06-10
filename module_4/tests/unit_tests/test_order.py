@@ -3,7 +3,6 @@ import re
 import pytest
 
 from src.order import Order
-from src.pizza import Pizza
 
 
 @pytest.fixture
@@ -26,23 +25,60 @@ def test_init():
 @pytest.fixture
 @pytest.mark.order
 def test_input_pizza():
-    assert True
+    
+    # Create Order object and store the cost
+    o = Order()
+    cost1 = o.cost
+
+    # Add a pizza to the order and check the cost again
+    o.input_pizza(crust='thick', sauce='marinara', cheese='mozzarella', toppings=['pepperoni', 'mushrooms'])
+    cost2 = o.cost
+
+    # Ensure that the cost of the order increases
+    assert cost2 - cost1 > 0
 
 
 
 @pytest.mark.order
 def test_str():
 
-    gpa = re.search(r'GPA \d+\.[0-9]+', row[6])
+    # Create order object and put a pizza in the order
+    o = Order()    
+    o.input_pizza(crust='thick', sauce='marinara', cheese='mozzarella', toppings=['pepperoni', 'mushrooms'])
+    
+    # Get the order string from the __str__ method
+    text = o.__str__()
 
+    # Ensure the crust is displayed correctly
+    crust = re.search('Crust: [a-zA-Z]+', text)
+    assert crust
 
-    assert True
+    # Ensure the sauce is displayed correctly (in a list, despite not being inserted as a list)
+    sauce = re.search(r'Sauce: \[\'[a-zA-Z]+\'\]', text)
+    assert sauce
+
+    # Ensure the cheese is displayed correctly
+    cheese = re.search('Crust: [a-zA-Z]+', text)
+    assert cheese
+
+    # Ensure the toppings are displayed correctly (as a list)
+    toppings = re.search(r'Crust: \[\'[a-zA-Z]+\' , \'[a-zA-Z]+\'\]', text)
+    assert toppings
 
 
 
 @pytest.mark.order
 def test_order_paid():
-    assert True
+    
+    # Create order object and put a pizza in the order
+    o = Order()    
+    o.input_pizza(crust='thick', sauce='marinara', cheese='mozzarella', toppings=['pepperoni', 'mushrooms'])
+
+    # Use the order_paid method to mark the order as paid
+    o.order_paid()
+
+    # Ensure that the paid class member is initialized to "False"
+    assert o.paid == True
 
 
 
