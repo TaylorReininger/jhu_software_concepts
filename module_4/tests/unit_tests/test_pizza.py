@@ -5,7 +5,6 @@ import pytest
 from src.pizza import Pizza
 
 
-@pytest.fixture
 @pytest.mark.pizza
 def test_init():
 

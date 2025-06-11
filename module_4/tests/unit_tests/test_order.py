@@ -5,7 +5,6 @@ import pytest
 from src.order import Order
 
 
-@pytest.fixture
 @pytest.mark.order
 def test_init():
 
@@ -22,7 +21,6 @@ def test_init():
     assert o.paid == False
     
 
-@pytest.fixture
 @pytest.mark.order
 def test_input_pizza():
     
@@ -49,6 +47,8 @@ def test_str():
     # Get the order string from the __str__ method
     text = o.__str__()
 
+    print(text)
+
     # Ensure the crust is displayed correctly
     crust = re.search('Crust: [a-zA-Z]+', text)
     assert crust
@@ -62,7 +62,7 @@ def test_str():
     assert cheese
 
         # Ensure the toppings are displayed correctly (as a list)
-    toppings = re.search(r'Toppings: \[\'[a-zA-Z]+\' , \'[a-zA-Z]+\'\]', text)
+    toppings = re.search(r'Toppings: \[\'[a-zA-Z]+\', \'[a-zA-Z]+\'\]', text)
     assert toppings
 
     # Ensure the cost is displayed correctly
