@@ -91,3 +91,26 @@ Hi
 
 ```
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Configuring Sphinx
+
+```
+cd docs
+sphinx-quickstart
+
+
+```
