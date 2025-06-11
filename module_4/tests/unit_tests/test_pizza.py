@@ -51,7 +51,7 @@ def test_str():
 def test_cost():
 
     # Initialize a pizza object and 
-    p = Pizza(crust='thick', sauce='marinara', cheese='mozzarella', toppings=['pepperoni', 'mushrooms'])
+    p = Pizza(crust='thick', sauce=['marinara', 'pesto'], cheese='mozzarella', toppings='pepperoni')
 
     # Get the cost of the pizza from the object
     c = p.cost()

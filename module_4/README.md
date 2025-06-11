@@ -59,3 +59,35 @@ pip install --upgrade pip
 # Install all the libraries in the requirements file
 pip install -r requirements.txt
 ```
+
+4. To run the pytest test suite on our code, run the following:
+```bash
+# Run all tests
+pytest .
+
+# Run the tests with the "order" mark
+pytest -m order
+# Run the tests with the "pizza" mark
+pytest -m pizza
+```
+Example output:
+
+![Pytest](figs/pytests.png)
+
+
+5. Run code coverage report
+```bash
+# Creates a coverage report for the folder "src"
+pytest --cov-report term-missing --cov=src
+```
+Example output:
+
+![Coverage Report](figs/coverage_report.png)
+
+
+6. To run the Sphinx documentation process
+```bash
+Hi
+
+```
+
