@@ -1,0 +1,228 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to my Module 4 Documentation!!! &mdash; Module4 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. src" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Module4
+              <img src="_static/pizza_image.jpg" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">1. src</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Module4</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to my Module 4 Documentation!!!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-my-module-4-documentation">
+<h1>Welcome to my Module 4 Documentation!!!<a class="headerlink" href="#welcome-to-my-module-4-documentation" title="Link to this heading"></a></h1>
+<section id="module-4">
+<h2>Module 4<a class="headerlink" href="#module-4" title="Link to this heading"></a></h2>
+<section id="author">
+<h3>Author<a class="headerlink" href="#author" title="Link to this heading"></a></h3>
+<p>Taylor J. Reininger<br />
+trinin2&#64;jh.edu<br />
+EN.605.256<br />
+2025-06-11</p>
+<p><a class="reference external" href="https://github.com/TaylorReininger/jhu_software_concepts/tree/main/module_4">Link to GitHub module</a></p>
+</section>
+<section id="approach">
+<h3>Approach<a class="headerlink" href="#approach" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>I am using Python==3.12</p></li>
+<li><p>I am using Pytest and a Test-Driven Development (TDD) Workflow to develop my classes</p></li>
+</ul>
+</section>
+<section id="installation-and-execution">
+<h3>Installation and Execution<a class="headerlink" href="#installation-and-execution" title="Link to this heading"></a></h3>
+<p>NOTE: These instructions assume the user either has Anaconda or another method of creating virtual environments already configured.</p>
+<p>Follow these steps to configure and execut the tool:</p>
+<ol class="arabic simple">
+<li><p>Create your virtual environment (Anaconda or Pyenv)</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">## Anaconda</span>
+
+<span class="c1"># Create new Anaconda environment based on Python 3.12 (enter &quot;y&quot; to continue)</span>
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>mod4<span class="w"> </span><span class="nv">python</span><span class="o">==</span><span class="m">3</span>.12
+
+<span class="c1"># Activate the newly created environment</span>
+conda<span class="w"> </span>activate<span class="w"> </span>mod4
+</pre></div>
+</div>
+<p>((OR))</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">## Pyenv</span>
+
+<span class="c1"># Install the latest version of Python 12 for pyenv</span>
+pyenv<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.12.10
+
+<span class="c1"># Activate this version of pyenv for use in the next step</span>
+pyenv<span class="w"> </span>shell<span class="w"> </span><span class="m">3</span>.12.10
+
+<span class="c1"># Create the virtual environment</span>
+python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>mod4
+
+<span class="c1"># Activate the newly created environment</span>
+<span class="nb">source</span><span class="w"> </span>./mod4/bin/activate
+
+<span class="c1"># Update pip just in case it&#39;s on an old version</span>
+pip<span class="w"> </span>install<span class="w"> </span>--upgrade<span class="w"> </span>pip
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">module_4</span></code> folder of this repo</p></li>
+<li><p>Install the dependencies for the app</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install all the libraries in the requirements file</span>
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>To run the pytest test suite on our code, run the following:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run all tests</span>
+pytest<span class="w"> </span>.
+
+<span class="c1"># Run the tests with the &quot;order&quot; mark</span>
+pytest<span class="w"> </span>-m<span class="w"> </span>order
+<span class="c1"># Run the tests with the &quot;pizza&quot; mark</span>
+pytest<span class="w"> </span>-m<span class="w"> </span>pizza
+</pre></div>
+</div>
+<p>Example output:</p>
+<p><img alt="Pytest" src="_images/pytests.png" /></p>
+<ol class="arabic simple" start="5">
+<li><p>Run code coverage report</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creates a coverage report for the folder &quot;src&quot;</span>
+pytest<span class="w"> </span>--cov-report<span class="w"> </span>term-missing<span class="w"> </span>--cov<span class="o">=</span>src
+</pre></div>
+</div>
+<p>Example output:</p>
+<p><img alt="Coverage Report" src="_images/coverage_report.png" /></p>
+<ol class="arabic simple" start="6">
+<li><p>To run the Sphinx documentation process</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate to the documentation folder</span>
+<span class="nb">cd</span><span class="w"> </span>docs
+<span class="c1"># Run the auto-documentation step</span>
+sphinx-apidoc<span class="w"> </span>-o<span class="w"> </span>./source<span class="w"> </span>../src/
+<span class="c1"># Clean and build the HTML</span>
+make<span class="w"> </span>clean
+make<span class="w"> </span>html
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>To open the documentation, open the <code class="docutils literal notranslate"><span class="pre">index.html</span></code> file in <code class="docutils literal notranslate"><span class="pre">docs/build/html</span></code></p></li>
+</ol>
+<p>Sample HTML</p>
+<p><img alt="Sphinx Page" src="_images/sphinx_example.png" /></p>
+</section>
+</section>
+</section>
+<section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">1. src</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.html">1.1. src package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="src.html#submodules">1.1.1. Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#module-src.order">1.1.2. src.order module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#module-src.pizza">1.1.3. src.pizza module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.html#module-src">1.1.4. Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-right" title="1. src" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Taylor J. Reininger.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
