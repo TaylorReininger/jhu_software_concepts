@@ -7,7 +7,7 @@ from typing import Union, List, Optional, Dict
 
 class Pizza:
 
-    def __init__(self, crust: str='thin', sauce: Union[str, List]='marinara', cheese: Union[str, None]='mozzarella', toppings: Union[str, List]=['pepperoni']) -> None:
+    def __init__(self, crust: str='thin', sauce: Union[str, List]='marinara', cheese: Union[str, None]=None, toppings: Union[str, List]=['pepperoni']) -> None:
 
         # Store the options in a pizza dictionary
         self.pizza = dict()
