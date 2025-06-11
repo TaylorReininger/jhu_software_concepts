@@ -10,7 +10,7 @@ def test_multiple_pizzas():
 
     # Create an order object
     o = Order()
-    assert o.cost() == 0
+    assert o.cost == 0
     # Input the default pizza
     o.input_pizza()
     cost1 = o.cost
