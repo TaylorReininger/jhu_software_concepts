@@ -5,7 +5,11 @@ from src.pizza import Pizza
 
 
 class Order:
-
+    """
+    The order object which contains all pizza objects for a given order, 
+    the associated cost, as well as some useful methods. 
+    """
+    
     def __init__(self) -> None:
         """
         Initializes an Order class object
@@ -41,9 +45,13 @@ class Order:
         return output
     
     
-    def input_pizza(self, crust: str='thin', sauce: Union[str, List]='marinara', cheese: Union[str, None]=None, toppings: Union[str, List]=['pepperoni']) -> None:
+    def input_pizza(self, 
+            crust: str='thin', 
+            sauce: Union[str, List]='marinara', 
+            cheese: Union[str, None]=None, 
+            toppings: Union[str, List]=['pepperoni']) -> None:
         """
-        Adds a pizza to the order with the desired toppings. 
+        Adds a pizza to the order with the desired toppings and updates the total cost.
 
         :param crust: The type of pizza crust (thin, thick, gluten free). Must pick one. 
         :type crust: str
@@ -54,7 +62,7 @@ class Order:
         :param toppings: The type of pizza toppings (pineapple, pepperoni, mushrooms). Must pick one to multiple. 
         :type toppings: Union[str, List]
         """
-        
+
         # Make a pizza object with the specified parameters
         p = Pizza(crust=crust, sauce=sauce, cheese=cheese, toppings=toppings)
 
@@ -68,5 +76,9 @@ class Order:
 
 
     def order_paid(self) -> None:
+        """
+        Changes the status of the order to "paid"
+        """
+
         # Change the paid member to True
         self.paid = True

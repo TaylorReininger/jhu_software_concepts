@@ -4,10 +4,29 @@ from typing import Union, List, Optional, Dict
 
 
 
-
 class Pizza:
+    """
+    The pizza object which contains all the ingredients and the associated 
+    cost, as well as some useful methods. 
+    """
 
-    def __init__(self, crust: str='thin', sauce: Union[str, List]='marinara', cheese: Union[str, None]=None, toppings: Union[str, List]=['pepperoni']) -> None:
+    def __init__(self, 
+            crust: str='thin', 
+            sauce: Union[str, List]='marinara', 
+            cheese: Union[str, None]=None, 
+            toppings: Union[str, List]=['pepperoni']) -> None:
+        """
+        Creates a pizza object with the desired toppings. 
+
+        :param crust: The type of pizza crust (thin, thick, gluten free). Must pick one. 
+        :type crust: str
+        :param sauce: The type of pizza sauce (marinara, pesto, liv sauce). Must pick one to multiple. 
+        :type sauce: Union[str, List]
+        :param cheese: The type of pizza cheese (mozzarela, None). Can pick up to one. 
+        :type cheese: Union[str, None]
+        :param toppings: The type of pizza toppings (pineapple, pepperoni, mushrooms). Must pick one to multiple. 
+        :type toppings: Union[str, List]
+        """
 
         # Store the options in a pizza dictionary
         self.pizza = dict()
@@ -46,6 +65,14 @@ class Pizza:
 
 
     def __str__(self) -> str:
+        """
+        Turns the pizza details into a string that can be displayed to the user. 
+
+        :return: A single string with all the content of the pizza and the price
+        :rtype: str
+        """
+
+        # Create a string with the pizza information
         text = "Crust: %s, Sauce: %s, Cheese: %s, Toppings: %s, Cost: %d"%(
             self.pizza['crust'], 
             self.pizza['sauces'], 
@@ -57,6 +84,10 @@ class Pizza:
         return text
 
     def _tally(self) -> None:
+        """
+        A private method to help tally up the cost of the pizza based on the 
+        chosen ingredients. 
+        """
 
         # Count up the cost of each part of the pizza
         # The crust
@@ -76,6 +107,13 @@ class Pizza:
 
 
     def cost(self) -> int:
+        """
+        Gets the cost of the pizza. 
+
+        :return: The cost of the pizza in dollars
+        :rtype: int
+        """
+
         # Simply return the cost
         return self.price
 
