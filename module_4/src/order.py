@@ -16,6 +16,7 @@ class Order:
     
     def __str__(self):
         
+        # Initialize the output string
         output = ''
 
         # Print out all the pizzas in the order
