@@ -4,7 +4,7 @@
 Taylor J. Reininger\
 trinin2@jh.edu\
 EN.605.256\
-2025-06-09
+2025-06-11
 
 [Link to GitHub module](https://github.com/TaylorReininger/jhu_software_concepts/tree/main/module_4)
 
@@ -87,30 +87,17 @@ Example output:
 
 6. To run the Sphinx documentation process
 ```bash
-Hi
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Configuring Sphinx
-
-```
+# Navigate to the documentation folder
 cd docs
-sphinx-quickstart
-
-
+# Run the auto-documentation step
+sphinx-apidoc -o ./source ../src/
+# Clean and build the HTML
+make clean
+make html
 ```
+
+7. To open the documentation, open the ```index.html``` file in ```docs/build/html```
+
+Sample HTML
+
+![Sphinx Page](figs/sphinx_example.png)
